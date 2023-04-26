@@ -1,12 +1,12 @@
 import { galleryItems } from './gallery-items.js';
 // Change code below this line
 const gallery = document.querySelector('.gallery');
-let markup = '';
-galleryItems.map((elem,i) => {
 
-    markup += `<li class="gallery__item"><a class="gallery__link" href="${galleryItems[i].original}"><img class="gallery__image" src="${galleryItems[i].preview}" alt="${galleryItems[i].description}"/></a></li>`;
-})
+gallery.innerHTML = galleryItems.map((elem) => {
 
-gallery.insertAdjacentHTML('afterbegin', markup);
+  return `<li class="gallery__item"><a class="gallery__link" href="${elem.original}"><img class="gallery__image" src="${elem.preview}" alt="${elem.description}"/></a></li>`;
+}).join('');
+
+
 let lightbox = new SimpleLightbox('.gallery a', { captionsData: 'alt',
   captionDelay: 250});
